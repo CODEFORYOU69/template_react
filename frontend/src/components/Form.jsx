@@ -1,9 +1,26 @@
 import React, { useState } from "react";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { InputLabel, NativeSelect } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import { toast, Toaster } from "react-hot-toast";
 
 const backUrl = import.meta.env.VITE_BACKEND_URL;
 export default function Form() {
+  const darkTheme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
+  const navigate = useNavigate();
+
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
   const [country, setCountry] = useState("");
@@ -85,6 +102,7 @@ export default function Form() {
       .then((data) => {
         console.warn("Success:", data);
         SuccessSignUp();
+        navigate("/login");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -93,64 +111,122 @@ export default function Form() {
 
   return (
     <div>
-      <div>
-        <Toaster position="top-center" reverseOrder />
-      </div>
-      <h1>Sign up</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="firstname">First name</label>
-        <input
-          onChange={(event) => setFirstname(event.target.value)}
-          type="text"
-          name="firstname"
-          id="firstname"
-        />
-        <label htmlFor="lastname">Last name</label>
-        <input
-          onChange={(event) => setLastname(event.target.value)}
-          type="text"
-          name="lastname"
-          id="lastname"
-        />
-        <label htmlFor="country">Country</label>
-        <input
-          onChange={(event) => setCountry(event.target.value)}
-          type="text"
-          name="country"
-          id="country"
-        />
-        <label htmlFor="role">Role</label>
-        <select
-          onChange={(event) => setUserRole(event.target.value)}
-          name="role"
-          id="role"
-        >
-          <option value="athlete">Athlete</option>
-          <option value="coach">Coach</option>
-        </select>
-        <label htmlFor="email">Email</label>
-        <input
-          onChange={(event) => setEmail(event.target.value)}
-          type="email"
-          name="email"
-          id="email"
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          onChange={(event) => setPassword(event.target.value)}
-          type="text"
-          name="password"
-          id="password"
-        />
-        <label htmlFor="password">Confirm password</label>
-        <input
-          onChange={(event) => setConfirmPassword(event.target.value)}
-          type="text"
-          name="password"
-          id="password"
-        />
-        <button type="submit">Sign up</button>
-      </form>
+      <ThemeProvider theme={darkTheme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              component="h1"
+              variant="h5"
+              className="text-white text-main-font"
+            >
+              SIGN UP
+            </Typography>
+            <div>
+              <Toaster position="top-center" reverseOrder />
+            </div>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                onChange={(event) => setFirstname(event.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                type="text"
+                label="First name"
+                name="firstname"
+                id="firstname"
+                autoComplete="firstname"
+                autoFocus
+              />
+              <TextField
+                onChange={(event) => setLastname(event.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                label="Last name"
+                name="lastname"
+                id="lastname"
+                autoComplete="lastname"
+                autoFocus
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                label="Country"
+                onChange={(event) => setCountry(event.target.value)}
+                name="country"
+                id="country"
+                autoComplete="country"
+                autoFocus
+              />
+              <InputLabel htmlFor="role">Role</InputLabel>
+              <NativeSelect
+                onChange={(event) => setUserRole(event.target.value)}
+                id="role"
+              >
+                <option value="">--choose--</option>
+                <option value="athlete">Athlete</option>
+                <option value="coach">Coach</option>
+              </NativeSelect>
+
+              <TextField
+                onChange={(event) => setEmail(event.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                label="Email"
+                type="email"
+                name="email"
+                id="email"
+                autoFocus
+              />
+
+              <TextField
+                onChange={(event) => setPassword(event.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                label="Password"
+                type="text"
+                name="password"
+                id="password"
+              />
+
+              <TextField
+                onChange={(event) => setConfirmPassword(event.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                label="Confirm Password"
+                type="text"
+                name="password"
+                id="password"
+              />
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
+                type="submit"
+              >
+                Sign up
+              </Button>
+            </Box>
+          </Box>
+        </Container>
+      </ThemeProvider>
     </div>
   );
 }

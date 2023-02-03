@@ -8,6 +8,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { InputLabel, NativeSelect } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useCurrentUserContext } from "../context/userContext";
 
 const backUrl = import.meta.env.VITE_BACKEND_URL;
@@ -20,6 +22,9 @@ export default function AddFighter() {
   const [weightCat, setWeightCat] = useState("");
   const [age, setAge] = useState("");
   const { token } = useCurrentUserContext();
+  const imgRef = React.useRef();
+
+  const navigate = useNavigate();
 
   const darkTheme = createTheme({
     palette: {
@@ -27,11 +32,11 @@ export default function AddFighter() {
     },
   });
 
-  //   const Created = () => {
-  //     toast("Fighter created successfully", {
-  //       icon: "👍",
-  //     });
-  //   };
+  const Created = () => {
+    toast("Fighter created successfully", {
+      icon: "👍",
+    });
+  };
   const Error = () => {
     toast("Error when create fighter try again", {
       icon: "👎",
@@ -44,6 +49,11 @@ export default function AddFighter() {
   };
   const ErrorCategory = () => {
     toast("The age and the category does not match", {
+      icon: "👎",
+    });
+  };
+  const NoFile = () => {
+    toast("No file found", {
       icon: "👎",
     });
   };
@@ -72,43 +82,42 @@ export default function AddFighter() {
       return;
     }
     // headers
-    const myHeaders = new Headers({
-      Authorization: `Bearer ${token}`,
-    });
-    myHeaders.append("Content-Type", "application/json");
+    if (imgRef.current.files[0]) {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      const formData = new FormData();
+      formData.append("img", imgRef.current.files[0]);
+      formData.append("firstname", firstname);
+      formData.append("lastname", lastname);
+      formData.append("sex", sex);
+      formData.append("country", country);
+      formData.append("category", category);
+      formData.append("weightCat", weightCat);
+      formData.append("age", age);
 
-    const body = JSON.stringify({
-      firstname,
-      lastname,
-      sex,
-      country,
-      category,
-      weightCat,
-      age,
-    });
+      for (const [key, value] of formData.entries()) {
+        console.warn(`${key}: ${value}`);
+      }
 
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body,
-    };
-    // send the data to the backend
-
-    fetch(`${backUrl}/api/fighters/`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        console.warn("Success:", data);
-        // Created();
-      })
-
-      .catch((error) => {
-        console.error("Error:", error);
-        Error();
-      });
+      axios
+        .post(`${backUrl}/api/fighters`, formData, config)
+        .then((data) => {
+          console.warn("Success:", data);
+          Created();
+          navigate("/Dashboard");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          Error();
+        });
+    } else {
+      NoFile();
+    }
   };
 
   return (
-    <div>
+    <div className="flex center">
       <ThemeProvider theme={darkTheme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />
@@ -135,7 +144,13 @@ export default function AddFighter() {
               onSubmit={handleSubmit}
               noValidate
               sx={{ mt: 1 }}
+              encType="multipart/form-data"
             >
+              <label htmlFor="img" className="form-label">
+                {" "}
+                Select image
+              </label>
+              <input type="file" ref={imgRef} id="img" required="required" />
               <TextField
                 onChange={(event) => setFirstname(event.target.value)}
                 margin="normal"

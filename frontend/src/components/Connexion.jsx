@@ -1,11 +1,24 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
 import { useCurrentUserContext } from "../context/userContext";
 
 const backUrl = import.meta.env.VITE_BACKEND_URL;
 
 export default function Form() {
+  const darkTheme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
+
   const { setUser, setToken } = useCurrentUserContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -50,23 +63,67 @@ export default function Form() {
 
   return (
     <div className="form">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          onChange={(event) => setEmail(event.target.value)}
-          type="email"
-          name="email"
-          id="email"
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          onChange={(event) => setPassword(event.target.value)}
-          type="password"
-          name="password"
-          id="password"
-        />
-        <button type="submit">Sign in</button>
-      </form>
+      <ThemeProvider theme={darkTheme}>
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <Box
+            sx={{
+              marginTop: 8,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              component="h1"
+              variant="h5"
+              className="text-white text-main-font"
+            >
+              LOGIN
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
+              <TextField
+                onChange={(event) => setEmail(event.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                label="Email Address"
+                type="email"
+                name="email"
+                id="email"
+                autoComplete="email"
+                autoFocus
+              />
+
+              <TextField
+                onChange={(event) => setPassword(event.target.value)}
+                margin="normal"
+                required
+                fullWidth
+                label="Password"
+                type="password"
+                name="password"
+                id="password"
+                autoComplete="current-password"
+                autoFocus
+              />
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
+                type="submit"
+              >
+                Sign in
+              </Button>
+            </Box>
+          </Box>
+        </Container>
+      </ThemeProvider>
       <div>
         <Toaster position="top-center" reverseOrder />
       </div>

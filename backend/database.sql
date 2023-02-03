@@ -20,6 +20,9 @@ DROP TABLE IF EXISTS user
   passwordtoken VARCHAR
       (100) NULL DEFAULT NULL
   );
+
+  INSERT INTO `user` VALUES (1,'younes','ouasmi','france','','y.ouasmi@gmail.com','$argon2id$v=19$m=65536,t=5,p=1$YCyKvGh7InAURzAjksJp5A$5OuV3y1JAt+5OLWxxQZebgC52PGAslEtQkw9rbfoguo',NULL);
+
         
 DROP TABLE IF EXISTS fighter
 ;
@@ -39,8 +42,13 @@ CREATE TABLE fighter
   category VARCHAR
       (45) NOT NULL ,
   weightCat INT NOT NULL,
-  age INT NOT NULL
+  age INT NOT NULL,
+  img VARCHAR
+      (255) NULL DEFAULT NULL
   );
+
+  INSERT INTO `fighter` VALUES (1,'YOUNES','OUASMI','Male','FRANCE','Senior',-74,38,NULL),(2,'CHRISTOPHER','DUBOIS','Male','FRANCE','Senior',-74,33,NULL),(3,'LEO','ATCHEKZAI','Male','AFGHANISTAN','Senior',-63,18,NULL);
+
         
  DROP TABLE IF EXISTS fight
   ;
@@ -48,14 +56,14 @@ CREATE TABLE fight
  (
   id INT PRIMARY KEY NOT NULL
       AUTO_INCREMENT,
-  year_event INT NOT NULL,
-  type_event VARCHAR
+  eventyear INT NOT NULL,
+  eventtype VARCHAR
       (150) NOT NULL,
-  name_event VARCHAR
+  eventname VARCHAR
       (150) NOT NULL,
   category VARCHAR
       (150) NOT NULL,
-  weight_cat INT NOT NULL,
+  weightcat INT NOT NULL,
   att_og_1_by_fighter1 INT  NULL,
   att_og_2_by_fighter1 INT  NULL,
   att_og_3_by_fighter1 INT  NULL,
@@ -126,6 +134,16 @@ CREATE TABLE fight
   def_fg_3_by_fighter2 INT  NULL,
   def_fg_4_by_fighter2 INT  NULL,
   def_fg_5_by_fighter2 INT  NULL,
+    def_fd_1_by_fighter1 INT  NULL,
+    def_fd_2_by_fighter1 INT  NULL,
+    def_fd_3_by_fighter1 INT  NULL,
+    def_fd_4_by_fighter1 INT  NULL,
+    def_fd_5_by_fighter1 INT  NULL,
+    def_fd_1_by_fighter2 INT  NULL,
+    def_fd_2_by_fighter2 INT  NULL,
+    def_fd_3_by_fighter2 INT  NULL,
+    def_fd_4_by_fighter2 INT  NULL,
+    def_fd_5_by_fighter2 INT  NULL,
   cac_og_1_by_fighter1 INT  NULL,
     cac_og_2_by_fighter1 INT  NULL,
     cac_og_3_by_fighter1 INT  NULL,
@@ -171,6 +189,14 @@ CREATE TABLE fight
   fighter1_id INT  NULL,
   fighter2_id INT  NULL,
   winner_id INT  NULL,
+    CONSTRAINT fk_fight_fighter1
+    FOREIGN KEY
+        (fighter1_id) REFERENCES fighter
+        (id),
+    CONSTRAINT fk_fight_fighter2
+    FOREIGN KEY
+        (fighter2_id) REFERENCES fighter
+        (id),
   CONSTRAINT fk_fight_winner
   FOREIGN KEY
       (winner_id) REFERENCES fighter

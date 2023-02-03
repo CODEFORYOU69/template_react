@@ -1,6 +1,9 @@
 const express = require("express");
 
 const router = express.Router();
+const multer = require("multer");
+
+const upload = multer({ dest: process.env.AVATAR_DIRECTORY });
 
 // services d'auth
 const {
@@ -12,6 +15,8 @@ const {
 const authControllers = require("./controllers/authControllers");
 const userControllers = require("./controllers/userControllers");
 const fighterControllers = require("./controllers/fighterControllers");
+const fightControllers = require("./controllers/fightControllers");
+const fileControllers = require("./controllers/fileControllers");
 
 // Auth
 router.post("/api/register", hashPassword, userControllers.add);
@@ -33,8 +38,21 @@ router.delete("/api/users/:id", verifyToken, userControllers.destroy);
 
 router.get("/api/fighters", fighterControllers.browse);
 router.get("/api/fighters/:id", fighterControllers.read);
-router.post("/api/fighters/", verifyToken, fighterControllers.add);
+// router.post("/api/fighters/", verifyToken, fighterControllers.add);
 router.put("/api/fighters/:id", verifyToken, fighterControllers.edit);
 router.delete("/api/fighters/:id", verifyToken, fighterControllers.destroy);
+router.post(
+  "/api/fighters",
+  verifyToken,
+  upload.fields([{ name: "img" }]),
+  fileControllers.renameImg,
+  fileControllers.uploadFighter
+);
+
+// gestion des fight
+
+router.get("/api/fights", fightControllers.browse);
+router.get("/api/fights/:id", fightControllers.read);
+router.post("/api/fights/", verifyToken, fightControllers.add);
 
 module.exports = router;

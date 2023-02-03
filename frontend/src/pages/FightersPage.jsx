@@ -1,9 +1,9 @@
-import AddFighter from "../components/AddFighter";
+import FightersCard from "../components/FightersCard";
 
 export default function Home() {
   return (
     <header className="App-header">
-      <AddFighter />
+      <FightersCard />
     </header>
   );
 }

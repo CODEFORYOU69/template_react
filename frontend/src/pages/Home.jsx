@@ -1,11 +1,9 @@
-import Form from "../components/Form";
-import Navbar from "../components/Navbar";
+import Welcome from "../components/Welcome";
 
 export default function Home() {
   return (
     <header className="App-header">
-      <Navbar />
-      <Form />
+      <Welcome />
     </header>
   );
 }

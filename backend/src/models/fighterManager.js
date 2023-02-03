@@ -14,21 +14,22 @@ class UserManager extends AbstractManager {
 
   findAll() {
     return this.connection.query(
-      `select id, firstname, lastname, sex , country, category, weightCat, age from  ${this.table}`
+      `select id, firstname, lastname, sex , country, category, weightCat, age, img from  ${this.table}`
     );
   }
 
-  insert(fighter) {
+  insert(fighters, img) {
     return this.connection.query(
-      `insert into ${this.table} (firstname, lastname, sex , country, category, weightCat, age) values (?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (firstname, lastname, sex , country, category, weightCat, age, img) values (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        fighter.firstname,
-        fighter.lastname,
-        fighter.sex,
-        fighter.country,
-        fighter.category,
-        fighter.weightCat,
-        fighter.age,
+        fighters.firstname,
+        fighters.lastname,
+        fighters.sex,
+        fighters.country,
+        fighters.category,
+        fighters.weightCat,
+        fighters.age,
+        img,
       ]
     );
   }

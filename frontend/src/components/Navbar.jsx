@@ -11,15 +11,25 @@ import {
 import SportsMartialArtsIcon from "@mui/icons-material/SportsMartialArts";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useCurrentUserContext } from "../context/userContext";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
+  const { setUser } = useCurrentUserContext();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+  const navigate = useNavigate();
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleDisconnection = () => {
+    // gestion de la deconnexion
+    localStorage.clear();
+    setUser({});
+    navigate("/");
   };
   return (
     <AppBar position="static" color="transparent">
@@ -27,13 +37,57 @@ export default function Navbar() {
         <IconButton size="large" edge="start" color="inherit" aria-label="logo">
           <SportsMartialArtsIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          FIGHT DATA
+        <Typography
+          onClick={() => {
+            navigate("/");
+          }}
+          variant="h6"
+          component="div"
+          sx={{ flexGrow: 1 }}
+        >
+          DATA FIGHT
         </Typography>
         <Stack direction="row" spacing={2}>
-          <Button color="inherit">ATHLETES</Button>
-          <Button color="inherit">MY ATHLETES</Button>
-          <Button color="inherit">STATISTIQUES</Button>
+          <Button
+            onClick={() => {
+              navigate("/login");
+            }}
+            color="inherit"
+          >
+            LOGIN
+          </Button>
+          <Button
+            onClick={() => {
+              navigate("/addFighter");
+            }}
+            color="inherit"
+          >
+            ADD FIGHTER
+          </Button>
+          <Button
+            onClick={() => {
+              navigate("/fighters");
+            }}
+            color="inherit"
+          >
+            FIGHTERS
+          </Button>
+          <Button
+            onClick={() => {
+              navigate("/addFight");
+            }}
+            color="inherit"
+          >
+            ADD FIGHT
+          </Button>
+          <Button
+            onClick={() => {
+              navigate("/dashboard");
+            }}
+            color="inherit"
+          >
+            DASHBOARD
+          </Button>
           <Button
             color="inherit"
             id="resources-button"
@@ -45,7 +99,9 @@ export default function Navbar() {
           >
             Resources
           </Button>
-          <Button color="inherit">Login</Button>
+          <Button onClick={handleDisconnection} color="inherit">
+            LOG OUT
+          </Button>
         </Stack>
         <Menu
           id="resources-menu"
@@ -64,8 +120,24 @@ export default function Navbar() {
             "aria-labelledby": "resources-button",
           }}
         >
-          <MenuItem onClick={handleClose}>Blog</MenuItem>
-          <MenuItem onClick={handleClose}>Podcast</MenuItem>
+          <MenuItem onClick={handleClose}>
+            <a
+              href="https://www.youtube.com/@worldtaekwondo"
+              target="_blank"
+              rel="noreferrer"
+            >
+              World TKD Youtube
+            </a>
+          </MenuItem>
+          <MenuItem onClick={handleClose}>
+            <a
+              href="https://www.taekwondodata.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Taekwondo data
+            </a>
+          </MenuItem>
         </Menu>
       </Toolbar>
     </AppBar>
