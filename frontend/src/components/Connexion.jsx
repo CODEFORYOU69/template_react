@@ -50,6 +50,7 @@ export default function Form() {
       fetch(`${backUrl}/api/login`, requestOptions)
         .then((response) => response.json())
         .then((data) => {
+          console.warn("data", data);
           setUser(data.user);
           setToken(data.token);
           SuccessSignIn();

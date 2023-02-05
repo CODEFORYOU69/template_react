@@ -11,10 +11,16 @@ function FightersCard() {
   const [fighters, setFighters] = useState(null);
   console.warn(user);
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedFighter, setSelectedFighter] = useState(null);
+  const [selectedFighterId, setSelectedFighterId] = useState(null);
 
-  const handleModalOpen = () => {
+  const handleModalOpen = (id) => {
+    setSelectedFighterId(id);
+    setSelectedFighter(id);
     setModalOpen(true);
   };
+
+  console.warn(selectedFighterId);
 
   const handleModalClose = () => {
     setModalOpen(false);
@@ -50,7 +56,7 @@ function FightersCard() {
   }, []);
 
   const handleDelete = () => {
-    fetch(`${backUrl}/api/fighters/${fighters[0].id}`, DELrequestOptions);
+    fetch(`${backUrl}/api/fighters/${selectedFighter}`, DELrequestOptions);
     GetFighter();
   };
 
@@ -97,35 +103,47 @@ function FightersCard() {
                           UPDATE
                         </button>
                         <button
-                          onClick={handleModalOpen}
+                          onClick={() => handleModalOpen(fighter.id)}
                           type="button"
                           className=" inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                         >
                           DELETE
                         </button>
-                        {modalOpen && (
-                          <div className="p-4 border-2 border-red-600 rounded shadow-md ">
-                            <p className="text-black">
-                              Are you sure you want delete {fighter.firstname}{" "}
-                              {fighter.lastname}?
-                            </p>
-                            <button
-                              className=" inline-block px-6 py-2.5 bg-white text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                              type="button"
-                              onClick={handleModalClose}
-                            >
-                              CANCEL
-                            </button>
-                            <button
-                              className=" inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                              type="button"
-                              onClick={handleDelete}
-                            >
-                              DELETE
-                            </button>
-                          </div>
-                        )}
                       </div>
+                    </div>
+                    <div className="mt-48 flex absolute justify-center  bg-white">
+                      {modalOpen && (
+                        <div className="p-4 border-2 border-red-600 rounded shadow-md ">
+                          <p className="text-black">
+                            Are you sure you want delete{" "}
+                            {
+                              fighters.find(
+                                (fighterz) => fighterz.id === selectedFighter
+                              ).firstname
+                            }{" "}
+                            {
+                              fighters.find(
+                                (fighterz) => fighterz.id === selectedFighter
+                              ).lastname
+                            }
+                            ?
+                          </p>
+                          <button
+                            className=" inline-block px-6 py-2.5 bg-white text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            type="button"
+                            onClick={handleModalClose}
+                          >
+                            CANCEL
+                          </button>
+                          <button
+                            className=" inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                            type="button"
+                            onClick={handleDelete}
+                          >
+                            DELETE
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

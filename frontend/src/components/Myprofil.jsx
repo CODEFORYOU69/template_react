@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
@@ -19,7 +19,7 @@ export default function Myprofil() {
   const [lastname, setLastname] = useState("");
   const [country, setCountry] = useState("");
   const [userRole, setUserRole] = useState("");
-  const { user, token } = useCurrentUserContext();
+  const { user, setUser, token } = useCurrentUserContext();
   const imgRef = React.useRef();
 
   const navigate = useNavigate();
@@ -31,12 +31,12 @@ export default function Myprofil() {
   });
 
   const Created = () => {
-    toast("Fighter created successfully", {
+    toast("Profil modified successfully", {
       icon: "👍",
     });
   };
   const Error = () => {
-    toast("Error when create fighter try again", {
+    toast("Error when modify your profil try again", {
       icon: "👎",
     });
   };
@@ -83,6 +83,24 @@ export default function Myprofil() {
       NoFile();
     }
   };
+  const myHeaders = new Headers({
+    Authorization: `Bearer ${token}`,
+  });
+  myHeaders.append("Content-Type", "application/json");
+
+  const GETrequestOptions = {
+    method: "GET",
+    headers: myHeaders,
+  };
+  const GetUser = () => {
+    fetch(`${backUrl}/api/users/${user.id}`, GETrequestOptions)
+      .then((response) => response.json())
+      .then((data) => setUser(data));
+    console.warn();
+  };
+  useEffect(() => {
+    GetUser();
+  }, []);
 
   return (
     <div className="flex center">
