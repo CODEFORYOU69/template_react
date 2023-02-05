@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -8,48 +9,39 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { InputLabel, NativeSelect } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-import { toast, Toaster } from "react-hot-toast";
+import axios from "axios";
+import { useCurrentUserContext } from "../context/userContext";
 
 const backUrl = import.meta.env.VITE_BACKEND_URL;
-export default function Form() {
+
+export default function Myprofil() {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [country, setCountry] = useState("");
+  const [userRole, setUserRole] = useState("");
+  const { user, token } = useCurrentUserContext();
+  const imgRef = React.useRef();
+
+  const navigate = useNavigate();
+
   const darkTheme = createTheme({
     palette: {
       mode: "dark",
     },
   });
 
-  const navigate = useNavigate();
-
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [country, setCountry] = useState("");
-  const [userRole, setUserRole] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [img] = useState(null);
-
-  const SuccessSignUp = () => {
-    toast("Account created", {
+  const Created = () => {
+    toast("Fighter created successfully", {
       icon: "👍",
     });
   };
-  const ErrorPassword = () => {
-    toast("Password Does not match", {
+  const Error = () => {
+    toast("Error when create fighter try again", {
       icon: "👎",
     });
   };
-  const ErrorRegexPassword = () => {
-    toast(
-      "Password must be at least 8 characters long and contain at least one number and one letter one Uppercase and one special character",
-      {
-        icon: "👎",
-      }
-    );
-  };
-  const ErrorEmail = () => {
-    toast("Email is not correct", {
+  const NoFile = () => {
+    toast("No file found", {
       icon: "👎",
     });
   };
@@ -59,62 +51,43 @@ export default function Form() {
     console.warn("firstname", firstname);
     console.warn("lastname", lastname);
     console.warn("country", country);
-    console.warn("role", userRole);
-    console.warn("email", email);
 
-    if (password !== confirmPassword) {
-      ErrorPassword();
-      return;
-    }
-    // verify that the password is at least 8 characters long and contains at least one number and one letter (regex)
-    if (
-      !password.match(
-        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
-      )
-    ) {
-      ErrorRegexPassword();
-      return;
-    }
-    // verify that the email is valid (regex)
-    if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
-      ErrorEmail();
-      return;
-    }
     // headers
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    if (imgRef.current.files[0]) {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
+      const formData = new FormData();
+      formData.append("img", imgRef.current.files[0]);
+      formData.append("firstname", firstname);
+      formData.append("lastname", lastname);
+      formData.append("country", country);
+      formData.append("userRole", userRole);
 
-    const body = JSON.stringify({
-      email,
-      firstname,
-      lastname,
-      country,
-      userRole,
-      password,
-      img,
-    });
+      for (const [key, value] of formData.entries()) {
+        console.warn(`${key}: ${value}`);
+      }
 
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body,
-    };
-    // send the data to the backend
-    fetch(`${backUrl}/api/register`, requestOptions)
-      .then((data) => {
-        console.warn("Success:", data);
-        SuccessSignUp();
-        navigate("/login");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      axios
+        .put(`${backUrl}/api/users/${user.id}`, formData, config)
+        .then((data) => {
+          console.warn("Success:", data);
+          Created();
+          navigate("/Dashboard");
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          Error();
+        });
+    } else {
+      NoFile();
+    }
   };
 
   return (
-    <div className="flex ">
+    <div className="flex center">
       <ThemeProvider theme={darkTheme}>
-        <Container className="flex" component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs">
           <CssBaseline />
           <Box
             sx={{
@@ -129,17 +102,29 @@ export default function Form() {
               variant="h5"
               className="text-white text-main-font"
             >
-              SIGN UP
+              My Profil
             </Typography>
             <div>
               <Toaster position="top-center" reverseOrder />
             </div>
+
             <Box
               component="form"
               onSubmit={handleSubmit}
               noValidate
               sx={{ mt: 1 }}
+              encType="multipart/form-data"
             >
+              <img
+                alt="avatar"
+                src={`${backUrl}/uploads/${user.img}`}
+                className="bg-black p-1 w-[15%] h-[12vh] rounded-full mb-2 m-auto "
+              />
+              <label htmlFor="img" className="form-label">
+                {" "}
+                Select image
+              </label>
+              <input type="file" ref={imgRef} id="img" required="required" />
               <TextField
                 onChange={(event) => setFirstname(event.target.value)}
                 margin="normal"
@@ -183,47 +168,13 @@ export default function Form() {
                 <option value="athlete">Athlete</option>
                 <option value="coach">Coach</option>
               </NativeSelect>
-
-              <TextField
-                onChange={(event) => setEmail(event.target.value)}
-                margin="normal"
-                required
-                fullWidth
-                label="Email"
-                type="email"
-                name="email"
-                id="email"
-                autoFocus
-              />
-
-              <TextField
-                onChange={(event) => setPassword(event.target.value)}
-                margin="normal"
-                required
-                fullWidth
-                label="Password"
-                type="password"
-                name="password"
-                id="password"
-              />
-
-              <TextField
-                onChange={(event) => setConfirmPassword(event.target.value)}
-                margin="normal"
-                required
-                fullWidth
-                label="Confirm Password"
-                type="password"
-                name="password"
-                id="password"
-              />
               <Button
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
                 type="submit"
               >
-                Sign up
+                Add Fighter
               </Button>
             </Box>
           </Box>

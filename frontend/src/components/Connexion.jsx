@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { toast, Toaster } from "react-hot-toast";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
@@ -112,6 +112,18 @@ export default function Form() {
                 autoComplete="current-password"
                 autoFocus
               />
+              <NavLink
+                to="/SignUp"
+                className="flex justify-end text-white text-main-font"
+              >
+                <Typography
+                  component="subtitle1"
+                  variant="subtitle1"
+                  className="text-white text-sm text-main-font"
+                >
+                  Don't have an account? Sign Up
+                </Typography>
+              </NavLink>
               <Button
                 fullWidth
                 variant="contained"

@@ -223,7 +223,8 @@ export default function AddFight() {
         navigate("/dashboard");
       });
   }, []);
-
+  console.warn("fighter 2 id", fighter2_id.id);
+  console.warn("fighter 1 id", fighter1_id.id);
   const handleSubmit = (event) => {
     event.preventDefault();
     const myHeaders = new Headers({
@@ -382,7 +383,7 @@ export default function AddFight() {
         Error();
       });
   };
-  console.warn(fighter);
+  console.warn("fetchfighter", fighter);
 
   return (
     <div className="">

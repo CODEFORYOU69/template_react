@@ -10,6 +10,15 @@ function FightersCard() {
   const { user, token } = useCurrentUserContext();
   const [fighters, setFighters] = useState(null);
   console.warn(user);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
 
   const darkTheme = createTheme({
     palette: {
@@ -30,53 +39,56 @@ function FightersCard() {
     method: "DELETE",
     headers: myHeaders,
   };
-  useEffect(() => {
+  const GetFighter = () => {
     fetch(`${backUrl}/api/fighters/`, GETrequestOptions)
       .then((response) => response.json())
       .then((data) => setFighters(data));
     console.warn(fighters);
+  };
+  useEffect(() => {
+    GetFighter();
   }, []);
 
   const handleDelete = () => {
-    fetch(`${backUrl}/api/fighters/${user.id}`, DELrequestOptions);
+    fetch(`${backUrl}/api/fighters/${fighters[0].id}`, DELrequestOptions);
+    GetFighter();
   };
 
   return (
     <div>
       <ThemeProvider theme={darkTheme}>
-        <Container component="main" maxWidth="xs">
+        <Container component="main">
           <CssBaseline />
+
           {fighters && (
-            <div>
+            <div className="flex flex-wrap justify-center">
               {fighters.map((fighter) => (
-                <div key={fighter.id}>
-                  <div className=" m-8 h-[35rem] flex flex-row justify-center ">
-                    <div className=" bg-white rounded-lg shadow-lg  max-w-sm">
-                      <a href="#!">
-                        <img
-                          className="rounded-t-lg"
-                          src={`${backUrl}/uploads/${fighter.img}`}
-                          alt={fighter.firstname}
-                        />
-                      </a>
-                      <div className="p-6">
-                        <h5 className="text-black text-xl font-medium mb-2">
+                <div className="flex " key={fighter.id}>
+                  <div className=" m-8 flex object-contain ">
+                    <div className=" bg-white rounded-lg shadow-lg border-2 object-contain max-w-sm ">
+                      <img
+                        className="rounded-t-lg object-contain border-8 border-orange-700 w-[20rem] "
+                        src={`${backUrl}/uploads/${fighter.img}`}
+                        alt={fighter.firstname}
+                      />
+                      <div className="p-4 border-8 object-contain">
+                        <h5 className="text-black text-xl font-medium mb-1">
                           {fighter.firstname} {fighter.lastname}
                         </h5>
-                        <p className="text-black text-base mb-4">
+                        <p className="text-black text-base mb-1">
                           {fighter.country}
                         </p>
-                        <p className="text-black text-base mb-4">
+                        <p className="text-black text-base mb-1">
                           {fighter.category}
                         </p>
-                        <p className="text-black text-base mb-4">
+                        <p className="text-black text-base mb-1">
                           {fighter.weightCat}
                         </p>
-                        <p className="text-black text-base mb-4">
+                        <p className="text-black text-base mb-1">
                           {fighter.sex}
                         </p>
-                        <p className="text-black text-base mb-4">
-                          {fighter.age}
+                        <p className="text-black text-base mb-1">
+                          {fighter.age} years old
                         </p>
                         <button
                           type="button"
@@ -85,12 +97,34 @@ function FightersCard() {
                           UPDATE
                         </button>
                         <button
-                          onClick={handleDelete}
+                          onClick={handleModalOpen}
                           type="button"
                           className=" inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
                         >
                           DELETE
                         </button>
+                        {modalOpen && (
+                          <div className="p-4 border-2 border-red-600 rounded shadow-md ">
+                            <p className="text-black">
+                              Are you sure you want delete {fighter.firstname}{" "}
+                              {fighter.lastname}?
+                            </p>
+                            <button
+                              className=" inline-block px-6 py-2.5 bg-white text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                              type="button"
+                              onClick={handleModalClose}
+                            >
+                              CANCEL
+                            </button>
+                            <button
+                              className=" inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                              type="button"
+                              onClick={handleDelete}
+                            >
+                              DELETE
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

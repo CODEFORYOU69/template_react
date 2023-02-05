@@ -46,12 +46,12 @@ const add = (req, res) => {
 const edit = (req, res) => {
   const user = req.body;
   user.id = req.params.id;
+  const { img } = req;
 
   models.user
-    .update(user)
+    .update(user, img)
     .then(([result]) => {
-      if (result.affectedRows === 0) res.sendStatus(404);
-      else res.sendStatus(204);
+      res.status(201).location(`/api/users/${result.insertId}`).send();
     })
     .catch((error) => {
       console.error(error);

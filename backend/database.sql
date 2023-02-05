@@ -18,7 +18,9 @@ DROP TABLE IF EXISTS user
   hashedPassword VARCHAR
       (100) NOT NULL,
   passwordtoken VARCHAR
-      (100) NULL DEFAULT NULL
+      (100) NULL DEFAULT NULL,
+  img VARCHAR
+      (255) NULL DEFAULT NULL
   );
 
   INSERT INTO `user` VALUES (1,'younes','ouasmi','france','','y.ouasmi@gmail.com','$argon2id$v=19$m=65536,t=5,p=1$YCyKvGh7InAURzAjksJp5A$5OuV3y1JAt+5OLWxxQZebgC52PGAslEtQkw9rbfoguo',NULL);
@@ -189,14 +191,6 @@ CREATE TABLE fight
   fighter1_id INT  NULL,
   fighter2_id INT  NULL,
   winner_id INT  NULL,
-    CONSTRAINT fk_fight_fighter1
-    FOREIGN KEY
-        (fighter1_id) REFERENCES fighter
-        (id),
-    CONSTRAINT fk_fight_fighter2
-    FOREIGN KEY
-        (fighter2_id) REFERENCES fighter
-        (id),
   CONSTRAINT fk_fight_winner
   FOREIGN KEY
       (winner_id) REFERENCES fighter

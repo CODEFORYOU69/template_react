@@ -9,6 +9,7 @@ import AddFight from "./components/AddFight";
 import AddFighter from "./pages/AddFighter";
 import FightersPage from "./pages/FightersPage";
 import ChartData from "./pages/ChartData";
+import Myprofil from "./pages/MyProfilPage";
 import { CurrentUserContextProvider } from "./context/userContext";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/AddFighter" element={<AddFighter />} />
           <Route path="/fighters" element={<FightersPage />} />
           <Route path="/dashboard" element={<ChartData />} />
+          <Route path="/myprofil" element={<Myprofil />} />
         </Routes>
       </CurrentUserContextProvider>
     </BrowserRouter>
