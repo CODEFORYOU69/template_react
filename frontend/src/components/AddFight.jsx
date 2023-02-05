@@ -237,12 +237,12 @@ export default function AddFight() {
       .then((response) => response.json())
       .then((fightersList) => setFighter1(fightersList))
       .then(() => {
-        console.warn("fighterInfo1", fighter);
+        console.warn("fighterInfo1", fighter1);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, []);
+  }, [fighter1_id]);
   useEffect(() => {
     // recupération des articles.
     const myHeader = new Headers();
@@ -262,7 +262,7 @@ export default function AddFight() {
       .catch((error) => {
         console.error("Error:", error);
       });
-  }, []);
+  }, [fighter2_id]);
   console.warn("fighter 2 id", fighter2_id);
   console.warn("fighter 1 id", fighter1_id);
   const handleSubmit = (event) => {
@@ -434,6 +434,13 @@ export default function AddFight() {
       <ThemeProvider theme={darkTheme}>
         <Container component="main" maxWidth="lg">
           <CssBaseline />
+          <Typography
+            component="h1"
+            variant="h5"
+            className="text-white text-main-font"
+          >
+            ADD FIGHT
+          </Typography>
           <Box
             sx={{
               marginTop: 10,
@@ -443,13 +450,6 @@ export default function AddFight() {
               justifyContent: "center",
             }}
           >
-            <Typography
-              component="h1"
-              variant="h5"
-              className="text-white text-main-font"
-            >
-              ADD FIGHT
-            </Typography>
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -504,6 +504,7 @@ export default function AddFight() {
                           id="fighter2"
                           className=" mt-1"
                         >
+                          <option value="">--choose--</option>
                           {fighter.map((fighters1) => (
                             <option key={fighters1.id} value={fighters1.id}>
                               {fighters1.lastname} {fighters1.firstname}
