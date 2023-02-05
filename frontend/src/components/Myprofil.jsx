@@ -174,7 +174,7 @@ export default function Myprofil() {
                 sx={{ mt: 3, mb: 2, background: "#890000", color: "white" }}
                 type="submit"
               >
-                Add Fighter
+                Change my profil
               </Button>
             </Box>
           </Box>
