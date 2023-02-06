@@ -73,7 +73,7 @@ export default function Myprofil() {
         .then((data) => {
           console.warn("Success:", data);
           Created();
-          navigate("/Dashboard");
+          navigate("/Myprofil");
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -100,7 +100,7 @@ export default function Myprofil() {
   };
   useEffect(() => {
     GetUser();
-  }, []);
+  }, [GetUser]);
 
   return (
     <div className="flex center">
