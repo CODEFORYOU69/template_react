@@ -48,13 +48,16 @@ function FightersCard() {
     console.warn(fighters);
   };
 
-  const handleDelete = () => {
-    fetch(`${backUrl}/api/fighters/${selectedFighter}`, DELrequestOptions);
+  const handleDelete = async () => {
+    await fetch(
+      `${backUrl}/api/fighters/${selectedFighter}`,
+      DELrequestOptions
+    );
     GetFighter();
   };
   useEffect(() => {
     GetFighter();
-  }, [handleDelete]);
+  }, []);
 
   return (
     <div>

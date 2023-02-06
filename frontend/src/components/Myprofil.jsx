@@ -100,7 +100,7 @@ export default function Myprofil() {
   };
   useEffect(() => {
     GetUser();
-  }, [GetUser]);
+  }, []);
 
   return (
     <div className="flex center">
@@ -153,6 +153,8 @@ export default function Myprofil() {
                 name="firstname"
                 id="firstname"
                 autoComplete="firstname"
+                placeholder={user.firstname}
+                value={firstname}
                 autoFocus
               />
               <TextField
@@ -164,6 +166,8 @@ export default function Myprofil() {
                 name="lastname"
                 id="lastname"
                 autoComplete="lastname"
+                placeholder={user.lastname}
+                value={lastname}
                 autoFocus
               />
               <TextField
@@ -175,12 +179,16 @@ export default function Myprofil() {
                 name="country"
                 id="country"
                 autoComplete="country"
+                placeholder={user.country}
+                value={country}
                 autoFocus
               />
               <InputLabel htmlFor="role">Role</InputLabel>
               <NativeSelect
                 onChange={(event) => setUserRole(event.target.value)}
                 id="role"
+                value={userRole}
+                placeholder={user.userRole}
               >
                 <option value="">--choose--</option>
                 <option value="athlete">Athlete</option>
