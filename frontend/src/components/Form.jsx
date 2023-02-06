@@ -204,7 +204,7 @@ export default function Form() {
                 label="Password"
                 type="password"
                 name="password"
-                id="password"
+                id="password1"
               />
 
               <TextField
@@ -215,7 +215,7 @@ export default function Form() {
                 label="Confirm Password"
                 type="password"
                 name="password"
-                id="password"
+                id="password2"
               />
               <Button
                 fullWidth

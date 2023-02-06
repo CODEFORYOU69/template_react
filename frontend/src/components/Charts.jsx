@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import NativeSelect from "@mui/material/NativeSelect";
-import InputLabel from "@mui/material/InputLabel";
+// import NativeSelect from "@mui/material/NativeSelect";
+// import InputLabel from "@mui/material/InputLabel";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
+// import TextField from "@mui/material/TextField";
+// import Item from "@mui/material/Grid";
 import {
   Radar,
   RadarChart,
@@ -13,12 +15,51 @@ import {
   PolarAngleAxis,
   PolarRadiusAxis,
 } from "recharts";
+// import { useNavigate } from "react-router-dom";
+// import isConnected from "../services/isConnected";
+// import { useCurrentUserContext } from "../context/userContext";
 
 const backUrl = import.meta.env.VITE_BACKEND_URL;
 
 function RadarChartFight() {
   const [data, setData] = useState([]);
-  const [setYear] = useState("");
+  // const [sex, setSex] = useState("");
+  // const [category, setCategory] = useState("");
+  // const [fighter1_id, setFighter1_id] = useState([]);
+  // const [weightcat, setWeightcat] = useState("");
+  // const [setYear] = useState("");
+  // const [eventyear, setEventyear] = useState("");
+  // const [eventtype, setEventtype] = useState("");
+  // const [eventname, setEventname] = useState("");
+  // const [fighter, setFighter] = useState([]);
+  // const { token } = useCurrentUserContext();
+
+  // const Navigate = useNavigate();
+
+  // useEffect(() => {
+  //   // recupération des articles.
+  //   const myHeader = new Headers();
+  //   myHeader.append("Authorization", `Bearer ${token}`);
+
+  //   const requestOptions = {
+  //     method: "GET",
+  //     headers: myHeader,
+  //   };
+
+  //   fetch(`${backUrl}/api/fighters`, requestOptions)
+  //     .then((response) => {
+  //       if (!isConnected(response)) localStorage.clear();
+  //       Navigate("/login");
+  //       return response.json();
+  //     })
+  //     .then((fightersList) => setFighter(fightersList))
+  //     .then(() => {
+  //       console.warn("fightersList", fighter);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // }, []);
 
   const darkTheme = createTheme({
     palette: {
@@ -357,32 +398,304 @@ function RadarChartFight() {
               variant="h5"
               className="text-white text-main-font"
             >
-              FILTER FIGHTS
+              DATA ALL FIGHTS
             </Typography>
-            <InputLabel htmlFor="fighter1">Year</InputLabel>
-            <NativeSelect
-              onChange={(event) => setYear(event.target.value)}
-              id="Year"
+
+            {/* <Box
+              sx={{
+                display: "grid",
+                columnGap: 1,
+                rowGap: 2,
+                gridTemplateColumns: "repeat(1, 1fr)",
+              }}
             >
-              <option value="">--choose--</option>
-              {data.map((years) => (
-                <option key={years.id} value={years.eventyear}>
-                  {years.eventyear}
-                </option>
-              ))}
-            </NativeSelect>
-            {/* <InputLabel htmlFor="fighter1">Your Fighter</InputLabel>
-            <NativeSelect
-              onChange={(event) => setFighter1_id(event.target.value)}
-              id="fighter1"
-            >
-              <option value="">--choose--</option>
-              {fighter.map((fighters1) => (
-                <option key={fighters1.id} value={fighters1.id}>
-                  {fighters1.lastname} {fighters1.firstname}
-                </option> */}
-            {/* ))}
-            </NativeSelect> */}
+              <Item>
+                <InputLabel className=" mt-1" htmlFor="fighter1">
+                  Your Fighter
+                </InputLabel>
+                <NativeSelect
+                  onChange={(event) => setFighter1_id(event.target.value)}
+                  id="fighter1"
+                  className=" mt-1"
+                >
+                  <option value="">--choose--</option>
+                  {fighter.map((fighters1) => (
+                    <option key={fighters1.id} value={fighters1.id}>
+                      {fighters1.lastname} {fighters1.firstname}
+                    </option>
+                  ))}
+                </NativeSelect>
+              </Item>
+              <Item>
+                <TextField
+                  onChange={(event) => setEventyear(event.target.value)}
+                  margin="normal"
+                  required
+                  label="Year"
+                  name="year"
+                  id="password"
+                  autoFocus
+                />
+              </Item>
+              <Item>
+                <InputLabel htmlFor="category">Type of Event</InputLabel>
+                <NativeSelect
+                  onChange={(event) => setEventtype(event.target.value)}
+                  id="Type"
+                >
+                  <option value="">--choose--</option>
+                  <option value="G1">G1</option>
+                  <option value="G2">G2</option>
+                  <option value="World Cup">World Cup</option>
+                  <option value="European Championship">
+                    European Championship
+                  </option>
+                  <option value="National Championship">
+                    National Championship
+                  </option>
+                  <option value="Open">Open</option>
+                </NativeSelect>
+              </Item>
+              <Item>
+                {" "}
+                <TextField
+                  onChange={(event) => setEventname(event.target.value)}
+                  margin="normal"
+                  required
+                  label="Name Event"
+                  name="NameEvent"
+                  id="NameEvent"
+                  autoFocus
+                />
+              </Item>
+              <Item>
+                <InputLabel htmlFor="category">Category</InputLabel>
+                <NativeSelect
+                  onChange={(event) => setCategory(event.target.value)}
+                  id="category"
+                >
+                  <option value="">--choose--</option>
+                  <option value="Cadet">Cadet</option>
+                  <option value="Junior">Junior</option>
+                  <option value="Senior">Senior</option>
+                </NativeSelect>
+              </Item>
+              <Item>
+                <InputLabel htmlFor="sex">Sex</InputLabel>
+                <NativeSelect
+                  onChange={(event) => setSex(event.target.value)}
+                  name="sex"
+                  id="sex"
+                >
+                  <option value="">--choose--</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </NativeSelect>
+              </Item>
+              <Item>
+                {" "}
+                <InputLabel htmlFor="WeightCat">Weight Category</InputLabel>
+                <NativeSelect
+                  onChange={(event) => setWeightcat(event.target.value)}
+                  name="WeightCat"
+                  id="WeightCat"
+                >
+                  <option value="">Select a Weight Category</option>
+                  {category === "Cadet" && sex === "Male" && (
+                    <>
+                      <option type="Cadet" value="-33">
+                        under 33kg
+                      </option>
+                      <option type="Cadet" value="-37">
+                        under 37kg
+                      </option>
+                      <option type="Cadet" value="-41">
+                        under 42kg
+                      </option>
+                      <option type="Cadet" value="-45">
+                        under 45kg
+                      </option>
+                      <option type="Cadet" value="-49">
+                        under 48kg
+                      </option>
+                      <option type="Cadet" value="-53">
+                        under 52kg
+                      </option>
+                      <option type="Cadet" value="-57">
+                        under 57kg
+                      </option>
+                      <option type="Cadet" value="-61">
+                        under 63kg
+                      </option>
+                      <option type="Cadet" value="-65">
+                        under 68kg
+                      </option>
+                      <option type="Cadet" value="+65">
+                        more than 68kg
+                      </option>
+                    </>
+                  )}
+                  {category === "Junior" && sex === "Male" && (
+                    <>
+                      <option type="Junior" value="-45">
+                        under 45kg
+                      </option>
+                      <option type="Junior" value="-48">
+                        under 48kg
+                      </option>
+                      <option type="Junior" value="-51">
+                        under 51kg
+                      </option>
+                      <option type="Junior" value="-55">
+                        under 55kg
+                      </option>
+                      <option type="Junior" value="-59">
+                        under 59kg
+                      </option>
+                      <option type="Junior" value="-63">
+                        under 63kg
+                      </option>
+                      <option type="Junior" value="-68">
+                        under 68kg
+                      </option>
+                      <option type="Junior" value="-73">
+                        under 73kg
+                      </option>
+                      <option type="Junior" value="-78">
+                        under 78kg
+                      </option>
+                      <option type="Junior" value="+78">
+                        more than 78kg
+                      </option>
+                    </>
+                  )}
+                  {category === "Senior" && sex === "Male" && (
+                    <>
+                      <option type="Senior" value="-54">
+                        under 54kg
+                      </option>
+                      <option type="Senior" value="-58">
+                        under 58kg
+                      </option>
+                      <option type="Senior" value="-63">
+                        under 63kg
+                      </option>
+                      <option type="Senior" value="-68">
+                        under 68kg
+                      </option>
+                      <option type="Senior" value="-74">
+                        under 74kg
+                      </option>
+                      <option type="Senior" value="-80">
+                        under 80kg
+                      </option>
+                      <option type="Senior" value="-88">
+                        under 88kg
+                      </option>
+                      <option type="Senior" value="+88">
+                        more than 88kg
+                      </option>
+                    </>
+                  )}
+                  {category === "Cadet" && sex === "Female" && (
+                    <>
+                      <option type="Cadet" value="-29">
+                        under 29kg
+                      </option>
+                      <option type="Cadet" value="-33">
+                        under 33kg
+                      </option>
+                      <option type="Cadet" value="-37">
+                        under 37kg
+                      </option>
+                      <option type="Cadet" value="-41">
+                        under 41kg
+                      </option>
+                      <option type="Cadet" value="-44">
+                        under 44kg
+                      </option>
+                      <option type="Cadet" value="-47">
+                        under 47kg
+                      </option>
+                      <option type="Cadet" value="-51">
+                        under 51kg
+                      </option>
+                      <option type="Cadet" value="-55">
+                        under 55kg
+                      </option>
+                      <option type="Cadet" value="-59">
+                        under 59kg
+                      </option>
+                      <option type="Cadet" value="+59">
+                        more than 59kg
+                      </option>
+                    </>
+                  )}
+                  {category === "Junior" && sex === "Female" && (
+                    <>
+                      <option type="Junior" value="-42">
+                        under 42kg
+                      </option>
+                      <option type="Junior" value="-44">
+                        under 44kg
+                      </option>
+                      <option type="Junior" value="-46">
+                        under 46kg
+                      </option>
+                      <option type="Junior" value="-49">
+                        under 49kg
+                      </option>
+                      <option type="Junior" value="-52">
+                        under 52kg
+                      </option>
+                      <option type="Junior" value="-55">
+                        under 55kg
+                      </option>
+                      <option type="Junior" value="-59">
+                        under 59kg
+                      </option>
+                      <option type="Junior" value="-63">
+                        under 63kg
+                      </option>
+                      <option type="Junior" value="-68">
+                        under 68kg
+                      </option>
+                      <option type="Junior" value="+68">
+                        more than 68kg
+                      </option>
+                    </>
+                  )}
+                  {category === "Senior" && sex === "Female" && (
+                    <>
+                      <option type="Senior" value="-46">
+                        under 46kg
+                      </option>
+                      <option type="Senior" value="-49">
+                        under 49kg
+                      </option>
+                      <option type="Senior" value="-53">
+                        under 53kg
+                      </option>
+                      <option type="Senior" value="-57">
+                        under 57kg
+                      </option>
+                      <option type="Senior" value="-62">
+                        under 62kg
+                      </option>
+                      <option type="Senior" value="-67">
+                        under 67kg
+                      </option>
+                      <option type="Senior" value="-73">
+                        under 73kg
+                      </option>
+                      <option type="Senior" value="+73">
+                        more than 73kg
+                      </option>
+                    </>
+                  )}
+                </NativeSelect>
+              </Item>
+            </Box> */}
             <div>
               <RadarChart
                 cx={300}

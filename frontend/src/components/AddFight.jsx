@@ -427,7 +427,7 @@ export default function AddFight() {
   console.warn("fetchfighter1", fighter1);
   console.warn("fetchfighter2", fighter2);
   return (
-    <div className="m-2 flex justify-center">
+    <div className="hidden lg:block m-2  justify-center">
       <div>
         <Toaster position="top-center" reverseOrder />
       </div>
@@ -793,7 +793,7 @@ export default function AddFight() {
                       <div className=" m-8 flex object-contain  ">
                         <div className=" bg-white rounded-lg shadow-lg border-2 object-contain max-w-xs ">
                           <img
-                            className="rounded-t-lg object-contain border-8 border-blue-600 w-[20rem] "
+                            className="rounded-t-lg h-80 border-8 border-blue-600 w-[20rem] "
                             src={`${backUrl}/uploads/${fighter1.img}`}
                             alt={fighter1.firstname}
                           />
@@ -822,7 +822,7 @@ export default function AddFight() {
                       <div className=" m-8 flex object-contain ">
                         <div className=" bg-white rounded-lg shadow-lg border-2 object-contain max-w-sm ">
                           <img
-                            className="rounded-t-lg object-contain border-8 border-red-600 w-[20rem] "
+                            className="rounded-t-lg h-80 border-8 border-red-600 w-[20rem] "
                             src={`${backUrl}/uploads/${fighter2.img}`}
                             alt={fighter2.firstname}
                           />
@@ -925,8 +925,8 @@ export default function AddFight() {
                       setAtt_og_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name="AOLB"
                     id="password"
                     autoFocus
                   />
@@ -937,8 +937,8 @@ export default function AddFight() {
                       setAtt_og_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -949,8 +949,8 @@ export default function AddFight() {
                       setAtt_og_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -962,8 +962,8 @@ export default function AddFight() {
                       setAtt_og_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -975,8 +975,8 @@ export default function AddFight() {
                       setAtt_og_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -988,8 +988,8 @@ export default function AddFight() {
                       setAtt_og_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1001,8 +1001,8 @@ export default function AddFight() {
                       setAtt_og_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1014,8 +1014,8 @@ export default function AddFight() {
                       setAtt_og_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1027,8 +1027,8 @@ export default function AddFight() {
                       setAtt_og_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1040,8 +1040,8 @@ export default function AddFight() {
                       setAtt_og_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1053,8 +1053,8 @@ export default function AddFight() {
                       setAtt_od_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1066,8 +1066,8 @@ export default function AddFight() {
                       setAtt_od_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1079,8 +1079,8 @@ export default function AddFight() {
                       setAtt_od_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1092,8 +1092,8 @@ export default function AddFight() {
                       setAtt_od_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1105,8 +1105,8 @@ export default function AddFight() {
                       setAtt_od_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1118,8 +1118,8 @@ export default function AddFight() {
                       setAtt_od_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1131,8 +1131,8 @@ export default function AddFight() {
                       setAtt_od_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1144,8 +1144,8 @@ export default function AddFight() {
                       setAtt_od_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1157,8 +1157,8 @@ export default function AddFight() {
                       setAtt_od_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1170,8 +1170,8 @@ export default function AddFight() {
                       setAtt_od_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1183,8 +1183,8 @@ export default function AddFight() {
                       setAtt_fg_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1196,8 +1196,8 @@ export default function AddFight() {
                       setAtt_fg_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1209,8 +1209,8 @@ export default function AddFight() {
                       setAtt_fg_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1222,8 +1222,8 @@ export default function AddFight() {
                       setAtt_fg_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1235,8 +1235,8 @@ export default function AddFight() {
                       setAtt_fg_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1248,8 +1248,8 @@ export default function AddFight() {
                       setAtt_fg_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1261,8 +1261,8 @@ export default function AddFight() {
                       setAtt_fg_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1274,8 +1274,8 @@ export default function AddFight() {
                       setAtt_fg_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1287,8 +1287,8 @@ export default function AddFight() {
                       setAtt_fg_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1300,8 +1300,8 @@ export default function AddFight() {
                       setAtt_fg_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1313,8 +1313,8 @@ export default function AddFight() {
                       setAtt_fd_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1326,8 +1326,8 @@ export default function AddFight() {
                       setAtt_fd_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1339,8 +1339,8 @@ export default function AddFight() {
                       setAtt_fd_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1352,8 +1352,8 @@ export default function AddFight() {
                       setAtt_fd_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1365,8 +1365,8 @@ export default function AddFight() {
                       setAtt_fd_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1378,8 +1378,8 @@ export default function AddFight() {
                       setAtt_fd_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1391,8 +1391,8 @@ export default function AddFight() {
                       setAtt_fd_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1404,8 +1404,8 @@ export default function AddFight() {
                       setAtt_fd_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1417,8 +1417,8 @@ export default function AddFight() {
                       setAtt_fd_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1430,8 +1430,8 @@ export default function AddFight() {
                       setAtt_fd_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1458,8 +1458,8 @@ export default function AddFight() {
                       setDef_og_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1470,8 +1470,8 @@ export default function AddFight() {
                       setDef_og_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1482,8 +1482,8 @@ export default function AddFight() {
                       setDef_og_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1495,8 +1495,8 @@ export default function AddFight() {
                       setDef_og_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1508,8 +1508,8 @@ export default function AddFight() {
                       setDef_og_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1521,8 +1521,8 @@ export default function AddFight() {
                       setDef_og_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1534,8 +1534,8 @@ export default function AddFight() {
                       setDef_og_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1547,8 +1547,8 @@ export default function AddFight() {
                       setDef_og_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1560,8 +1560,8 @@ export default function AddFight() {
                       setDef_og_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1573,8 +1573,8 @@ export default function AddFight() {
                       setDef_og_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1586,8 +1586,8 @@ export default function AddFight() {
                       setDef_od_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1599,8 +1599,8 @@ export default function AddFight() {
                       setDef_od_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1612,8 +1612,8 @@ export default function AddFight() {
                       setDef_od_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1625,8 +1625,8 @@ export default function AddFight() {
                       setDef_od_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1638,8 +1638,8 @@ export default function AddFight() {
                       setDef_od_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1651,8 +1651,8 @@ export default function AddFight() {
                       setDef_od_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1664,8 +1664,8 @@ export default function AddFight() {
                       setDef_od_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1677,8 +1677,8 @@ export default function AddFight() {
                       setDef_od_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1690,8 +1690,8 @@ export default function AddFight() {
                       setDef_od_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1703,8 +1703,8 @@ export default function AddFight() {
                       setDef_od_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1716,8 +1716,8 @@ export default function AddFight() {
                       setDef_fg_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1729,8 +1729,8 @@ export default function AddFight() {
                       setDef_fg_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1742,8 +1742,8 @@ export default function AddFight() {
                       setDef_fg_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1755,8 +1755,8 @@ export default function AddFight() {
                       setDef_fg_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1768,8 +1768,8 @@ export default function AddFight() {
                       setDef_fg_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1781,8 +1781,8 @@ export default function AddFight() {
                       setDef_fg_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1794,8 +1794,8 @@ export default function AddFight() {
                       setDef_fg_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1807,8 +1807,8 @@ export default function AddFight() {
                       setDef_fg_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1820,8 +1820,8 @@ export default function AddFight() {
                       setDef_fg_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1833,8 +1833,8 @@ export default function AddFight() {
                       setDef_fg_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1846,8 +1846,8 @@ export default function AddFight() {
                       setDef_fd_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1859,8 +1859,8 @@ export default function AddFight() {
                       setDef_fd_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1872,8 +1872,8 @@ export default function AddFight() {
                       setDef_fd_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1885,8 +1885,8 @@ export default function AddFight() {
                       setDef_fd_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1898,8 +1898,8 @@ export default function AddFight() {
                       setDef_fd_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1911,8 +1911,8 @@ export default function AddFight() {
                       setDef_fd_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1924,8 +1924,8 @@ export default function AddFight() {
                       setDef_fd_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1937,8 +1937,8 @@ export default function AddFight() {
                       setDef_fd_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1950,8 +1950,8 @@ export default function AddFight() {
                       setDef_fd_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1963,8 +1963,8 @@ export default function AddFight() {
                       setDef_fd_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -1993,8 +1993,8 @@ export default function AddFight() {
                       setCac_og_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2005,8 +2005,8 @@ export default function AddFight() {
                       setCac_og_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2017,8 +2017,8 @@ export default function AddFight() {
                       setCac_og_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2030,8 +2030,8 @@ export default function AddFight() {
                       setCac_og_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2043,8 +2043,8 @@ export default function AddFight() {
                       setCac_og_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2056,8 +2056,8 @@ export default function AddFight() {
                       setCac_og_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2069,8 +2069,8 @@ export default function AddFight() {
                       setCac_og_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2082,8 +2082,8 @@ export default function AddFight() {
                       setCac_og_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2095,8 +2095,8 @@ export default function AddFight() {
                       setCac_og_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2108,8 +2108,8 @@ export default function AddFight() {
                       setCac_og_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2121,8 +2121,8 @@ export default function AddFight() {
                       setCac_od_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2134,8 +2134,8 @@ export default function AddFight() {
                       setCac_od_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2147,8 +2147,8 @@ export default function AddFight() {
                       setCac_od_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2160,8 +2160,8 @@ export default function AddFight() {
                       setCac_od_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2173,8 +2173,8 @@ export default function AddFight() {
                       setCac_od_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2186,8 +2186,8 @@ export default function AddFight() {
                       setCac_od_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2199,8 +2199,8 @@ export default function AddFight() {
                       setCac_od_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2212,8 +2212,8 @@ export default function AddFight() {
                       setCac_od_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2225,8 +2225,8 @@ export default function AddFight() {
                       setCac_od_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2238,8 +2238,8 @@ export default function AddFight() {
                       setCac_od_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2251,8 +2251,8 @@ export default function AddFight() {
                       setCac_fg_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2264,8 +2264,8 @@ export default function AddFight() {
                       setCac_fg_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2277,8 +2277,8 @@ export default function AddFight() {
                       setCac_fg_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2290,8 +2290,8 @@ export default function AddFight() {
                       setCac_fg_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2303,8 +2303,8 @@ export default function AddFight() {
                       setCac_fg_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2316,8 +2316,8 @@ export default function AddFight() {
                       setCac_fg_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2329,8 +2329,8 @@ export default function AddFight() {
                       setCac_fg_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2342,8 +2342,8 @@ export default function AddFight() {
                       setCac_fg_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2355,8 +2355,8 @@ export default function AddFight() {
                       setCac_fg_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2368,8 +2368,8 @@ export default function AddFight() {
                       setCac_fg_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2381,8 +2381,8 @@ export default function AddFight() {
                       setCac_fd_1_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2394,8 +2394,8 @@ export default function AddFight() {
                       setCac_fd_2_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2407,8 +2407,8 @@ export default function AddFight() {
                       setCac_fd_3_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2420,8 +2420,8 @@ export default function AddFight() {
                       setCac_fd_4_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2433,8 +2433,8 @@ export default function AddFight() {
                       setCac_fd_5_by_fighter1(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2446,8 +2446,8 @@ export default function AddFight() {
                       setCac_fd_1_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2459,8 +2459,8 @@ export default function AddFight() {
                       setCac_fd_2_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2472,8 +2472,8 @@ export default function AddFight() {
                       setCac_fd_3_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2485,8 +2485,8 @@ export default function AddFight() {
                       setCac_fd_4_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2498,8 +2498,8 @@ export default function AddFight() {
                       setCac_fd_5_by_fighter2(event.target.value)
                     }
                     margin="small"
-                    label="AOR"
-                    name="AOR"
+                    label=""
+                    name=""
                     id="password"
                     autoFocus
                   />
@@ -2520,7 +2520,7 @@ export default function AddFight() {
                     onChange={(event) => setGj_by_fighter1(event.target.value)}
                     margin="small"
                     label="BLUE"
-                    name="AOR"
+                    name=""
                     id="password"
                     autoFocus
                   />

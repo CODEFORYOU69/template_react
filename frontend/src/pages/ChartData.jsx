@@ -1,12 +1,14 @@
 import RadarChartFight from "../components/Charts";
-import AddFighter from "../components/AddFighter";
+import FightCreated from "../components/FightCreated";
 
 export default function ChartData() {
   return (
-    <header className="App-header">
+    <header className="App-header flex">
       <div className=" flex mt-10">
-        <AddFighter />
-        <RadarChartFight />
+        <div className="flex flex-row ">
+          <FightCreated />
+          <RadarChartFight />
+        </div>
       </div>
     </header>
   );

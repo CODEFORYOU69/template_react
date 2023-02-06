@@ -9,21 +9,17 @@ const backUrl = import.meta.env.VITE_BACKEND_URL;
 function FightersCard() {
   const { user, token } = useCurrentUserContext();
   const [fighters, setFighters] = useState(null);
+  const [selectedFighter, setSelectedFighter] = useState(0);
   console.warn(user);
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedFighter, setSelectedFighter] = useState(null);
-  const [selectedFighterId, setSelectedFighterId] = useState(null);
 
   const handleModalOpen = (id) => {
-    setSelectedFighterId(id);
     setSelectedFighter(id);
-    setModalOpen(true);
+    setModalOpen(id);
   };
 
-  console.warn(selectedFighterId);
-
   const handleModalClose = () => {
-    setModalOpen(false);
+    setModalOpen(0);
   };
 
   const darkTheme = createTheme({
@@ -51,14 +47,14 @@ function FightersCard() {
       .then((data) => setFighters(data));
     console.warn(fighters);
   };
-  useEffect(() => {
-    GetFighter();
-  }, []);
 
   const handleDelete = () => {
     fetch(`${backUrl}/api/fighters/${selectedFighter}`, DELrequestOptions);
     GetFighter();
   };
+  useEffect(() => {
+    GetFighter();
+  }, [handleDelete]);
 
   return (
     <div>
@@ -73,7 +69,7 @@ function FightersCard() {
                   <div className=" m-8 flex object-contain ">
                     <div className=" bg-white rounded-lg shadow-lg border-2 object-contain max-w-sm ">
                       <img
-                        className="rounded-t-lg object-contain border-8 border-orange-700 w-[20rem] "
+                        className="rounded-t-lg border-8 border-orange-700 h-80 w-[20rem] "
                         src={`${backUrl}/uploads/${fighter.img}`}
                         alt={fighter.firstname}
                       />
@@ -112,21 +108,10 @@ function FightersCard() {
                       </div>
                     </div>
                     <div className="mt-48 flex absolute justify-center  bg-white">
-                      {modalOpen && (
+                      {modalOpen === fighter.id && (
                         <div className="p-4 border-2 border-red-600 rounded shadow-md ">
                           <p className="text-black">
-                            Are you sure you want delete{" "}
-                            {
-                              fighters.find(
-                                (fighterz) => fighterz.id === selectedFighter
-                              ).firstname
-                            }{" "}
-                            {
-                              fighters.find(
-                                (fighterz) => fighterz.id === selectedFighter
-                              ).lastname
-                            }
-                            ?
+                            Are you sure you want delete {fighter.lastname}?
                           </p>
                           <button
                             className=" inline-block px-6 py-2.5 bg-white text-black font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"

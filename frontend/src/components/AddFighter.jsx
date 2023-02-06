@@ -105,7 +105,7 @@ export default function AddFighter() {
         .then((data) => {
           console.warn("Success:", data);
           Created();
-          navigate("/Dashboard");
+          navigate("/Fighters");
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -117,7 +117,7 @@ export default function AddFighter() {
   };
 
   return (
-    <div className="flex center">
+    <div className=" ">
       <ThemeProvider theme={darkTheme}>
         <Container component="main" maxWidth="xs">
           <CssBaseline />

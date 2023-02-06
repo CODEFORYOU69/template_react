@@ -7,8 +7,8 @@ import taekwondoIcon from "../assets/taekwondoIcon.png";
 
 const navigation = [
   { name: "Home", to: "/", current: true },
-  { name: "Login", to: "/login", current: true },
-  { name: "Add Fight", to: "/addfight", current: true },
+  { name: "Login", to: "/login", current: false },
+  { name: "Add Fight", to: "/addfight", current: false },
   { name: "Fighters", to: "/fighters", current: false },
   { name: "Dashboard", to: "/dashboard", current: false },
   { name: "Myprofil", to: "/myprofil", current: false },
@@ -44,12 +44,12 @@ export default function Navbar() {
                   <img
                     className="block h-8 w-auto lg:hidden"
                     src={taekwondoIcon}
-                    alt="Your Company"
+                    alt="Data Fight"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
                     src={taekwondoIcon}
-                    alt="Your Company"
+                    alt="Data Fight"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
@@ -64,7 +64,7 @@ export default function Navbar() {
                             : "text-gray-300 hover:bg-gray-700 hover:text-white",
                           "px-3 py-2 rounded-md text-sm font-medium"
                         )}
-                        aria-current={item.current ? "page" : item.to}
+                        aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </NavLink>
@@ -103,7 +103,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <Disclosure.Panel className="sm:hidden ">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
                 <Disclosure.Button
@@ -116,7 +116,7 @@ export default function Navbar() {
                       : "text-gray-300 hover:bg-gray-700 hover:text-white",
                     "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : item.to}
+                  aria-current={item.current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>

@@ -54,7 +54,7 @@ export default function Form() {
           setUser(data.user);
           setToken(data.token);
           SuccessSignIn();
-          navigate("/Dashboard");
+          navigate("/fighters");
         })
         .catch(console.error);
     } else {
